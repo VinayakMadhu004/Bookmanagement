@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PageTurn | Book Library</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <a class="brand" href="/books">
+            <span class="brand-mark">P</span> PageTurn
+        </a>
+
+        <nav class="main-nav">
+            <a class="active" href="/books">Library</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="hero">
+            <div class="hero-copy">
+                <p class="eyebrow">YOUR PERSONAL LIBRARY</p>
+
+                <h1>
+                    A good book can<br>
+                    <span>take you anywhere.</span>
+                </h1>
+
+                <p class="hero-text">
+                    Keep your collection organised. Discover what you have,
+                    add new favourites, and keep track of every book.
+                </p>
+            </div>
+
+            <div class="hero-art">
+                <div class="book-stack">
+                    <div class="book book-one">
+                        <span>THE ART OF<br>READING</span>
+                    </div>
+
+                    <div class="book book-two">
+                        <span>IDEAS<br>THAT LAST</span>
+                    </div>
+
+                    <div class="book book-three">
+                        <span>THE<br>JOURNEY</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="library-section">
+
+        <div class="section-heading">
+    <div>
+        <p class="eyebrow">THE COLLECTION</p>
+        <h2>Your library</h2>
+        <p class="muted">
+            All your books, together in one place.
+        </p>
+    </div>
+
+    <a class="button" href="/books/add">
+        + Add New Book
+    </a>
+</div>
+
+            {{#if books.length}}
+
+            <div class="book-grid">
+
+                {{#each books}}
+
+                <article class="book-card">
+
+                    <a class="cover-link" href="/books/details/{{this._id}}">
+
+                        {{#if this.image}}
+                            <img
+                                class="book-cover"
+                                src="/uploads/{{this.image}}"
+                                alt="{{this.title}} cover">
+                        {{else}}
+                            <div class="cover-placeholder">
+                                <span>PAGE<br>TURN</span>
+                                <small>BOOK</small>
+                            </div>
+                        {{/if}}
+
+                    </a>
+
+                    <div class="book-card-body">
+
+                        <span class="category-tag">
+                            {{this.category}}
+                        </span>
+
+                        <h3>
+                            <a href="/books/details/{{this._id}}">
+                                {{this.title}}
+                            </a>
+                        </h3>
+
+                        <p class="book-author">
+                            by {{this.author}}
+                        </p>
+
+                        <div class="card-meta">
+                            <span>{{this.year}}</span>
+                            <span class="rating">★ {{this.rating}}</span>
+                        </div>
+
+                        <a class="card-link" href="/books/details/{{this._id}}">
+                            View details →
+                        </a>
+
+                    </div>
+
+                </article>
+
+                {{/each}}
+
+            </div>
+
+            {{else}}
+
+            <div class="empty-state">
+                <div class="empty-icon">▤</div>
+
+                <h3>Your library is waiting</h3>
+
+                <p>
+                    You haven't added any books yet.
+                    Start building your collection.
+                </p>
+
+                <a class="button" href="/books/add">
+                    Add your first book
+                </a>
+            </div>
+
+            {{/if}}
+
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <span>PageTurn</span>
+        <span>A little more reading, a little more living.</span>
+    </footer>
+
+</body>
+</html>

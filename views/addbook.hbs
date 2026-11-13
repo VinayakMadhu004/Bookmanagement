@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Book | PageTurn</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #f7f6f0;
+            font-family: Arial, sans-serif;
+            color: #26382e;
+        }
+
+        .add-page {
+            max-width: 850px;
+            width: 90%;
+            margin: 55px auto;
+        }
+
+        .add-heading {
+            margin-bottom: 30px;
+        }
+
+        .add-heading p {
+            color: #174c36;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .add-heading h1 {
+            font-family: Georgia, serif;
+            font-size: 42px;
+            margin: 12px 0;
+        }
+
+        .add-heading h1 span {
+            color: #174c36;
+        }
+
+        .add-heading .subtitle {
+            color: #849087;
+            font-size: 15px;
+            letter-spacing: normal;
+            font-weight: normal;
+        }
+
+        .form-card {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            border: 1px solid #e8e9df;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .form-header {
+            border-bottom: 1px solid #e8e9df;
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+        }
+
+        .form-header h2 {
+            margin: 0 0 8px;
+            font-size: 22px;
+        }
+
+        .form-header p {
+            margin: 0;
+            color: #849087;
+            font-size: 14px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #dfe3dc;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+            background: #fcfcfa;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #174c36;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group input[type="file"] {
+            padding: 9px;
+        }
+
+        .form-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            margin-top: 30px;
+            padding-top: 22px;
+            border-top: 1px solid #e8e9df;
+        }
+
+        .form-buttons a,
+        .form-buttons button {
+            padding: 12px 22px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+        }
+
+        .cancel-btn {
+            background: #eaf1eb;
+            color: #174c36;
+        }
+
+        .submit-btn {
+            background: #174c36;
+            color: white;
+        }
+
+        .submit-btn:hover {
+            background: #103a29;
+        }
+
+        @media(max-width: 600px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .full-width {
+                grid-column: auto;
+            }
+
+            .form-card {
+                padding: 22px;
+            }
+
+            .add-heading h1 {
+                font-size: 32px;
+            }
+
+            .form-buttons {
+                flex-direction: column;
+            }
+
+            .form-buttons a,
+            .form-buttons button {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="site-header">
+        <a class="brand" href="/books">
+            <span class="brand-mark">P</span> PageTurn
+        </a>
+
+        <nav class="main-nav">
+            <a href="/books">Library</a>
+        </nav>
+    </header>
+
+    <main class="add-page">
+
+        <div class="add-heading">
+            <p>GROW YOUR COLLECTION</p>
+
+            <h1>Add a new <span>book.</span></h1>
+
+            <p class="subtitle">
+                Enter the details below to add a book to your library.
+            </p>
+        </div>
+
+        <form class="form-card"
+              action="/books/add"
+              method="POST"
+              enctype="multipart/form-data">
+
+            <div class="form-header">
+                <h2>Book Information</h2>
+                <p>Fill in the details of your book.</p>
+            </div>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label for="title">Book Title</label>
+                    <input type="text"
+                           id="title"
+                           name="title"
+                           placeholder="Enter book title"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label for="author">Author</label>
+                    <input type="text"
+                           id="author"
+                           name="author"
+                           placeholder="Enter author name"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <input type="text"
+                           id="category"
+                           name="category"
+                           placeholder="e.g. Fiction, Science"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label for="year">Publication Year</label>
+                    <input type="number"
+                           id="year"
+                           name="year"
+                           placeholder="e.g. 2024"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label for="rating">Rating (out of 10)</label>
+                    <input type="number"
+                           id="rating"
+                           name="rating"
+                           min="0"
+                           max="10"
+                           step="0.1"
+                           placeholder="e.g. 8.5"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label for="price">Price (₹)</label>
+                    <input type="number"
+                           id="price"
+                           name="price"
+                           min="0"
+                           step="0.01"
+                           placeholder="e.g. 399"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label for="image">Book Cover</label>
+                    <input type="file"
+                           id="image"
+                           name="image"
+                           accept="image/*">
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="description">Description</label>
+                    <textarea id="description"
+                              name="description"
+                              placeholder="Write a short description about the book..."
+                              required></textarea>
+                </div>
+
+            </div>
+
+            <div class="form-buttons">
+
+                <a href="/books" class="cancel-btn">
+                    Cancel
+                </a>
+
+                <button type="submit" class="submit-btn">
+                    Add Book →
+                </button>
+
+            </div>
+
+        </form>
+
+    </main>
+
+    <footer class="site-footer">
+        <span>PageTurn</span>
+        <span>A little more reading, a little more living.</span>
+    </footer>
+
+</body>
+</html>

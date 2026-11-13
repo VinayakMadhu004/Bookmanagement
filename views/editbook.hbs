@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Book | PageTurn</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <header class="site-header">
+
+        <a class="brand" href="/books">
+            <span class="brand-mark">P</span> PageTurn
+        </a>
+
+        <nav class="main-nav">
+            <a href="/books">Library</a>
+            <a href="/books/add">Add a book</a>
+        </nav>
+
+        <a class="button button-small button-light" href="/books">
+            ← Back to library
+        </a>
+
+    </header>
+
+    <main class="form-page">
+
+        <div class="form-intro">
+
+            <p class="eyebrow">KEEP IT UP TO DATE</p>
+
+            <h1>
+                Edit your <span>book.</span>
+            </h1>
+
+            <p>
+                Make changes to the information saved in your library.
+            </p>
+
+        </div>
+
+        <form
+            class="form-card"
+            action="/books/update/{{book._id}}"
+            method="POST"
+            enctype="multipart/form-data">
+
+            <div class="form-card-heading">
+
+                <div>
+                    <h2>Update information</h2>
+                    <p>Change any field you need to update.</p>
+                </div>
+
+                <span class="form-step">EDIT</span>
+
+            </div>
+
+            <div class="form-grid">
+
+                <div class="form-group full-width">
+
+                    <label for="title">Book title <span>*</span></label>
+
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        value="{{book.title}}"
+                        required>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="author">Author <span>*</span></label>
+
+                    <input
+                        type="text"
+                        id="author"
+                        name="author"
+                        value="{{book.author}}"
+                        required>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="category">Category</label>
+
+                    <input
+                        type="text"
+                        id="category"
+                        name="category"
+                        value="{{book.category}}">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="year">Publication year</label>
+
+                    <input
+                        type="number"
+                        id="year"
+                        name="year"
+                        value="{{book.year}}">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="rating">Your rating</label>
+
+                    <input
+                        type="number"
+                        id="rating"
+                        name="rating"
+                        value="{{book.rating}}"
+                        min="0"
+                        max="10"
+                        step="0.1">
+
+                </div>
+
+                <div class="form-group full-width">
+
+                    <label for="description">Description</label>
+
+                    <textarea
+                        id="description"
+                        name="description"
+                        rows="5">{{book.description}}</textarea>
+
+                </div>
+
+                <div class="form-group full-width">
+
+                    <label for="image">Change book cover (optional)</label>
+
+                    <input
+                        type="file"
+                        id="image"
+                        name="image"
+                        accept="image/*">
+
+                    <small>
+                        Leave this empty if you want to keep the current cover.
+                    </small>
+
+                </div>
+
+            </div>
+
+            <div class="form-actions">
+
+                <a class="button button-light" href="/books">
+                    Cancel
+                </a>
+
+                <button class="button" type="submit">
+                    Update book →
+                </button>
+
+            </div>
+
+        </form>
+
+    </main>
+
+    <footer class="site-footer">
+        <span>PageTurn</span>
+        <span>Every book has a place here.</span>
+    </footer>
+
+</body>
+</html>

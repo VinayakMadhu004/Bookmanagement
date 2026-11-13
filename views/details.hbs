@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{book.title}} | PageTurn</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <a class="brand" href="/books">
+            <span class="brand-mark">P</span> PageTurn
+        </a>
+
+        <nav class="main-nav">
+            <a href="/books">Library</a>
+        </nav>
+    </header>
+
+    <main class="details-page">
+
+        <p class="eyebrow">BOOK DETAILS</p>
+
+        <div class="details-card">
+
+            <!-- Book Cover -->
+            <div class="details-cover">
+
+                {{#if book.image}}
+                    <img src="/uploads/{{book.image}}" alt="{{book.title}}">
+                {{else}}
+                    <div class="cover-placeholder large">
+                        <span>PAGE<br>TURN</span>
+                        <small>BOOK</small>
+                    </div>
+                {{/if}}
+
+            </div>
+
+            <!-- Book Information -->
+            <div class="details-content">
+
+                <span class="category-tag">{{book.category}}</span>
+
+                <h1>{{book.title}}</h1>
+
+                <p class="details-author">
+                    Written by {{book.author}}
+                </p>
+
+                <!-- Book Statistics -->
+                <div class="details-stats">
+
+                    <div>
+                        <small>YEAR</small>
+                        <strong>{{book.year}}</strong>
+                    </div>
+
+                    <div>
+                        <small>RATING</small>
+                        <strong class="rating">★ {{book.rating}}</strong>
+                    </div>
+
+                    <div>
+                        <small>PRICE</small>
+                        <strong>₹{{book.price}}</strong>
+                    </div>
+
+                </div>
+
+                <!-- Full Description -->
+                <div class="details-description">
+
+                    <h3>About this book</h3>
+
+                    <p>{{book.description}}</p>
+
+                </div>
+
+                <!-- Actions -->
+                <div class="details-actions">
+
+                    <a class="button" href="/books">
+                        ← Back to Library
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer class="site-footer">
+        <span>PageTurn</span>
+        <span>A little more reading, a little more living.</span>
+    </footer>
+
+</body>
+</html>
